@@ -11,14 +11,10 @@
         <form class="layui-form">
             <div class="layui-inline">
                 <div class="layui-input-inline">
-                    <input type="text" name="sourceId" class="layui-input searchVal" placeholder="接收人" />
+                    <input type="text" name="userName" class="layui-input searchVal" placeholder="接收人" />
                 </div>
                 <div class="layui-input-inline">
-                    <select name="isRead"  id="state">
-                        <option value="" >读取状态</option>
-                        <option value="0">未读</option>
-                        <option value="1" >已读</option>
-                    </select>
+                    <input type="text" name="className" class="layui-input searchVal" placeholder="班级名" />
                 </div>
                 <a class="layui-btn search_btn" id="btnSearch" data-type="reload">
                     <i class="layui-icon">&#xe615;</i> 搜索

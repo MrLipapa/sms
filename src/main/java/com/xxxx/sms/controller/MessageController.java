@@ -49,23 +49,13 @@ public class MessageController extends BaseController {
         //如果是修改操作，需要将修改的数据映射在页面中
         if(id != null){
             Message message = messageService.selectByPrimaryKey(id);
+            String claName = messageService.queryClassName(message.getClassId());
             AssertUtil.isTrue(message == null,"数据异常，请重试");
             request.setAttribute("message",message);
+            request.setAttribute("claName",claName);
         }
         return "message/addmessage";
     }
-    // 打开公告界面
-    @RequestMapping("notice")
-    public String notice(){
-        return "message/notice";
-    }
-
-    // 打开添加公告界面
-    @RequestMapping("toaddnotice")
-    public String toaddnotice(){
-        return "message/addnotice";
-    }
-
 
     /**
      * 添加数据
@@ -106,5 +96,10 @@ public class MessageController extends BaseController {
         return success();
     }
 
+    @RequestMapping("queryAllClass")
+    @ResponseBody
+    public List<Map<String,Object>> queryAllClass(){
+        return messageService.queryAllClass();
+    }
 
 }

@@ -4,22 +4,40 @@ import com.xxxx.sms.base.BaseQuery;
 
 public class MessageQuery extends BaseQuery {
 
-    private String sourceId; // 接收人
-    private String isRead; // 是否已读
+    private String targetId; // 接收人id
+    private String userName; // 接收人姓名
+    private String classId; // 源对象班级id
+    private String className; // 班级名
 
-    public String getSourceId() {
-        return sourceId;
+    public String getTargetId() {
+        return targetId;
     }
 
-    public void setSourceId(String sourceId) {
-        this.sourceId = sourceId;
+    public void setTargetId(String targetId) {
+        this.targetId = targetId;
     }
 
-    public String getIsRead() {
-        return isRead;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setIsRead(String isRead) {
-        this.isRead = isRead;
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getClassId() {
+        return classId;
+    }
+
+    public void setClassId(String classId) {
+        this.classId = classId;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 }

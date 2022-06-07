@@ -44,9 +44,9 @@ public class MessageService extends BaseService<Message,Integer> {
     /**
      * 添加数据
      *      1.校验参数
-     *          targetId   目标对象的id 非空
-     *          message       留言内容   非空
-     *          classId      目标班级id 非空
+     *          userName        接收人姓名 非空
+     *          message         留言内容   非空
+     *          className       班级名 非空
      *      2.设置默认值
      *          is_valid     数据有效   0无效 1有效
      *          create_date  数据创建时间
@@ -58,7 +58,10 @@ public class MessageService extends BaseService<Message,Integer> {
      */
     public void addMessage(Message message){
         //校验参数
-        checkParams(message.getTargetId(),message.getMessage(),message.getClassId());
+        checkParams(message.getUserName(),message.getMessage(),message.getClassId()+"");
+        //根据目标对象名称 获取 目标对象id
+        Integer targetId = messageMapper.queryTargetId(message.getUserName());
+        message.setTargetId(targetId);
         //设置默认值
         message.setIsValid(1);
         message.setUpdateDate(new Date());
@@ -69,26 +72,26 @@ public class MessageService extends BaseService<Message,Integer> {
 
         /**
      * 校验添加数据
-                targetId   目标对象的id 非空
-     *          message       留言内容   非空
-     *          classId      源对象班级id 非空
-     * @param targetId
+     *          userName        接收人姓名 非空
+     *          message         留言内容   非空
+     *          className       班级名 非空
+     * @param userName
      * @param message
-     * @param classId
+     * @param className
      */
-    private void checkParams(Integer targetId, String message, Integer classId) {
-        AssertUtil.isTrue(targetId == null,"目标对象的id不能为空");
+    private void checkParams(String userName, String message, String className) {
+        AssertUtil.isTrue(StringUtils.isBlank(userName),"接收人不能为空");
         AssertUtil.isTrue(StringUtils.isBlank(message),"留言内容不能为空");
-        AssertUtil.isTrue(classId == null,"源对象班级id不能为空");
+        AssertUtil.isTrue(StringUtils.isBlank(className),"班级名不能为空");
     }
 
     /**
      * 修改数据
      *      1.校验参数
      *          id属性是必须存在的，查询数据库校验
-     *          targetId   目标对象的id 非空
-     *          message       留言内容   非空
-     *          classId      目标班级id 非空
+     *          userName        接收人姓名 非空
+     *          message         留言内容   非空
+     *          className       班级名 非空
      *      2.默认值
      *          update_date  修改时间
 
@@ -100,7 +103,7 @@ public class MessageService extends BaseService<Message,Integer> {
         //判断id是否存在
         AssertUtil.isTrue(message.getId() == null,"数据异常，请重试");
         //校验非空参数
-        checkParams(message.getTargetId(),message.getMessage(),message.getClassId());
+        checkParams(message.getUserName(),message.getMessage(),message.getClassId()+"");
         //设置默认值
         message.setUpdateDate(new Date());
 
@@ -115,5 +118,13 @@ public class MessageService extends BaseService<Message,Integer> {
     public void deleteMessage(Integer[] ids){
         AssertUtil.isTrue(ids == null || ids.length ==0,"请选择要删除的记录");
         AssertUtil.isTrue(messageMapper.deleteBatch(ids)!=ids.length,"营销机会数据删除失败！") ;
+    }
+
+    public String queryClassName(Integer id) {
+        return messageMapper.queryClassName(id);
+    }
+
+    public List<Map<String, Object>> queryAllClass() {
+        return  messageMapper.queryAllClass();
     }
 }

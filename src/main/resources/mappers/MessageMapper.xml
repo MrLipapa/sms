@@ -153,19 +153,22 @@
   <!--多条件分页查询数据-->
   <select id="queryByParams" parameterType="com.xxxx.sms.query.MessageQuery" resultType="Message">
     select
-        *
+        m.*,u.user_name as userName,c.class_name as className
     from
-        t_message
+        t_message m
+    left join t_user u on m.target_id = u.id
+    left join t_class c on m.class_id = c.id
     <where>
-        is_valid = 1
-        <if test="sourceId != null and sourceId != ''">
-          and  source_id = #{sourceId}
+        m.is_valid = 1
+        <if test="userName != null and userName != ''">
+          and  u.user_name like concat("%",#{userName},"%")
         </if>
-        <if test="isRead != null and isRead != ''">
-          and  is_read = #{isRead}
+        <if test="className != null and className != ''">
+          and  c.class_name like concat("%",#{className},"%")
         </if>
     </where>
   </select>
+
   <!--批量删除-->
   <update id="deleteBatch" >
     UPDATE t_message
@@ -177,6 +180,27 @@
       #{id}
     </foreach>
   </update>
+
+  <!--根据备注id查询班级名-->
+  <select id="queryClassName" resultType="String" parameterType="int">
+    select class_name
+    from t_class
+    where id=#{id}
+  </select>
+
+  <!--查询所有班级信息-->
+  <select id="queryAllClass" resultType="map">
+    select id as id,class_name as className
+    from t_class
+    where is_valid=1
+  </select>
+
+  <!--根据目标对象名称 查找目标对象id-->
+  <select id="queryTargetId" resultType="int" parameterType="String">
+    select id
+    from t_user
+    where user_name=#{userName}
+  </select>
 
 
 </mapper>

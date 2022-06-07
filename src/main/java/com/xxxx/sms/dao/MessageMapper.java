@@ -15,4 +15,12 @@ public interface MessageMapper extends BaseMapper<Message,Integer> {
     //查询所有销售人员数据
     public List<Map<String,Object>> queryAllSales();
 
+    //根据备注id查询班级名
+    String queryClassName(Integer id);
+
+    //查询所有班级信息
+    List<Map<String, Object>> queryAllClass();
+
+    //根据目标对象名称 查找目标对象id
+    Integer queryTargetId(String userName);
 }

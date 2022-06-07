@@ -19,15 +19,11 @@ layui.use(['table','layer'],function(){
         cols : [[
             {type: "checkbox", fixed:"center"},//多选框
             {field: "id", title:'编号',fixed:"true"},
-            {field: 'targetId', title: '目标对象的id',align:"center"},
-            {field: 'sourceId', title: '源对象的id',  align:'center'},
+            {field: 'userName', title: '接收人',align:"center"},
             {field: 'message', title: '留言内容', align:'center'},
-            {field: 'classId', title: '目标班级id', align:'center'},
+            {field: 'className', title: '班级名', align:'center'},
             {field: 'createDate', title: '创建日期', align:'center'},
             {field: 'updateDate', title: '修改日期', align:'center'},
-            {field: 'is_read', title: '是否已读', align:'center',templet:function(d){
-                    return formatterIsRead(d.isRead);
-                }},
             {title: '操作', templet:'#messageListBar',fixed:"right",align:"center", minWidth:150}
         ]]
     });
@@ -37,8 +33,8 @@ layui.use(['table','layer'],function(){
     $("#btnSearch").click(function (){
         tableIns.reload({
             where: { //设定异步数据接口的额外参数，任意设
-                sourceId:$('[name="sourceId"]').val(),
-                isRead:$('[name="isRead"]').val(),
+                userName:$('[name="userName"]').val(),
+                className:$('[name="className"]').val(),
             }
             ,page: {
                 curr: 1 //重新从第 1 页开始
@@ -170,20 +166,5 @@ layui.use(['table','layer'],function(){
         });
     }
 
-    /**
-     * 1->已读
-     * 2->未读
-     * @param isRead
-     * @returns {string}
-     */
-    function formatterIsRead(isRead){
-        if(isRead==1) {
-            return "<div style='color:green'>已读</div>";
-        }  else if(isRead==0) {
-            return "<div style='color: red'>未读</div>";
-        }else {
-            return "<div style='color: green'>未知</div>";
-        }
-    }
 
 });

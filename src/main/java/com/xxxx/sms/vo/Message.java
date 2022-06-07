@@ -23,6 +23,10 @@ public class Message {
 
     private Integer classId;
 
+    private String userName;
+
+    private String className;
+
     public Integer getId() {
         return id;
     }
@@ -101,5 +105,21 @@ public class Message {
 
     public void setClassId(Integer classId) {
         this.classId = classId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 }

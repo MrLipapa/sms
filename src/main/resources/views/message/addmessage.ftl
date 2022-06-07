@@ -7,23 +7,30 @@
 <form class="layui-form" style="width:80%;">
     <input type="hidden" name="id" id="hidId" value="${(message.id)!}">
     <div class="layui-form-item layui-row layui-col-xs12">
-        <label class="layui-form-label">接收人id</label>
+        <label class="layui-form-label">接收人</label>
         <div class="layui-input-block">
             <input type="text" class="layui-input" lay-verify="required"
-                   name="targetId" id="targetId"  value="${(message.targetId)!}" placeholder="请输入接收人id">
+                   name="userName" id="userName"  value="${(message.targetId)!}" placeholder="请输入接收人姓名">
         </div>
     </div>
+
     <div class="layui-form-item layui-row layui-col-xs12">
         <label class="layui-form-label">留言内容</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input"  name="message"
-                   id="message" value="${(message.message)!}" placeholder="请输入留言内容">
+                    <textarea placeholder="请输入留言内容" name="message" class="layui-textarea">
+                  	    ${(message.message)!}
+                    </textarea>
         </div>
     </div>
+
+    <#--获取当前指派人id 此时这个数据 并不需要前后台交互 所以不需要设置name属性-->
+    <input type="hidden" id="classId" value="${(homework.courseId)!}">
     <div class="layui-form-item layui-row layui-col-xs12">
-        <label class="layui-form-label">班级id</label>
+        <label class="layui-form-label">班级</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input" name="classId">
+            <select name="classId" id="className">
+                <option value="">${(claName)!}</option>
+            </select>
         </div>
     </div>
 
