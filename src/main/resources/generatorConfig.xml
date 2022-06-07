@@ -5,9 +5,8 @@
 <generatorConfiguration>
     <!-- 数据库驱动路径：在左侧project边栏的External Libraries中找到mysql的驱动，右键选择copy path -->
     <classPathEntry
-            location="F:\.m2\repository\mysql\mysql-connector-java\8.0.18\mysql-connector-java-8.0.18.jar"/>
-    <!-- context 是逆向工程的主要配置信息，id：起个名字，targetRuntime：设置生成的文件适用
-    于哪个mybatis版本 -->
+            location="D:\.m2\repository\mysql\mysql-connector-java\8.0.18\mysql-connector-java-8.0.18.jar"/>
+    <!-- context 是逆向工程的主要配置信息，id：起个名字，targetRuntime：设置生成的文件适用于哪个mybatis版本 -->
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <!--optional,指在创建class时，对注释进行控制-->
         <commentGenerator>
@@ -19,7 +18,7 @@
         <!-- 数据库链接地址账号密码 -->
         <jdbcConnection
                 driverClass="com.mysql.cj.jdbc.Driver"
-                connectionURL="jdbc:mysql://127.0.0.1:3306/crm?serverTimezone=GMT%2B8"
+                connectionURL="jdbc:mysql://127.0.0.1:3306/sms?serverTimezone=GMT%2B8"
                 userId="root"
                 password="root">
         </jdbcConnection>
@@ -35,7 +34,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- 生成Model类存放位置 -->
-        <javaModelGenerator targetPackage="com.xxxx.crm.vo"
+        <javaModelGenerator targetPackage="com.xxxx.sms.vo"
                             targetProject="src/main/java">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，生成的类
             放在这个package下，默认为false -->
@@ -49,12 +48,12 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--生成Dao类存放位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.xxxx.crm.dao"
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.xxxx.sms.dao"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 数据库的表名与对应的实体类的名称，tableName是数据库中的表名，domainObjectName是生成的JAVA模型名 -->
-        <table tableName="t_permission" domainObjectName="Permission"
+        <table tableName="t_homework" domainObjectName="Homework"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

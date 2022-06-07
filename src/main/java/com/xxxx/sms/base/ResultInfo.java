@@ -1,9 +1,7 @@
 package com.xxxx.sms.base;
-
 public class ResultInfo {
     private Integer code=200;
     private String msg="success";
-
     private Object result;
 
     public Object getResult() {

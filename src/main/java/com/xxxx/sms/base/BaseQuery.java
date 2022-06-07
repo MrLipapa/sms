@@ -2,10 +2,10 @@ package com.xxxx.sms.base;
 
 
 public class BaseQuery {
-    private Integer page=1;
-    private Integer limit=10;
+    private static Integer page=1;
+    private static Integer limit=10;
 
-    public Integer getPage() {
+    public static Integer getPage() {
         return page;
     }
 
@@ -13,7 +13,7 @@ public class BaseQuery {
         this.page = page;
     }
 
-    public Integer getLimit() {
+    public static Integer getLimit() {
         return limit;
     }
 

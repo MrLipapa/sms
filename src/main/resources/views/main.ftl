@@ -22,7 +22,7 @@
                 <a href="javascript:;" data-check-screen="full"><i class="fa fa-arrows-alt"></i></a>
             </li>
             <li class="layui-nav-item layuimini-setting">
-                <a href="javascript:;"></a>
+                <a href="javascript:;">${(user.userName)!""}</a>
                 <dl class="layui-nav-child">
                     <dd>
                         <a href="javascript:;" data-iframe-tab="${ctx}/user/toSettingPage" data-title="基本资料" data-icon="fa fa-gears">基本资料</a>
@@ -45,7 +45,8 @@
         <div class="layui-side-scroll layui-left-menu">
                 <ul class="layui-nav layui-nav-tree layui-left-nav-tree layui-this" id="currency">
                         <li class="layui-nav-item">
-                            <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="user/user" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 学生信息管理</span></a>
+<#--      进入对应页面                  -->
+                            <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="sale_chance/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 学生信息管理</span></a>
                         </li>
                         <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="course/course" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 课程管理</span></a>
@@ -63,6 +64,7 @@
                             </dd>
                         </dl>
                     </li>
+                    <#--进入对应页面，注意controller中对应的地址-->
                         <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-gears"></i><span class="layui-left-nav"> 系统设置</span> <span class="layui-nav-more"></span></a>
                             <dl class="layui-nav-child">
