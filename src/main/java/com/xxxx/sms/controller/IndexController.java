@@ -26,5 +26,10 @@ public class IndexController extends BaseController {
     public String main(){
         return "main";
     }
+    // 留言页面
+    @RequestMapping("massage")
+    public String massage(){
+        return "massage";
+    }
 
 }
