@@ -53,7 +53,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 数据库的表名与对应的实体类的名称，tableName是数据库中的表名，domainObjectName是生成的JAVA模型名 -->
-        <table tableName="t_permission" domainObjectName="Permission"
+        <table tableName="t_homework" domainObjectName="Homework"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
