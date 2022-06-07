@@ -14,7 +14,7 @@
         <label class="layui-form-label">课程</label>
         <div class="layui-input-block">
             <select name="courseId" id="courseName">
-                <option value="">请选择</option>
+                <option value="">${(courseName)!}</option>
             </select>
         </div>
     </div>
@@ -24,7 +24,7 @@
         <label class="layui-form-label">班级</label>
         <div class="layui-input-block">
             <select name="classId" id="className">
-                <option value="">请选择</option>
+                <option value="">${(className)!}</option>
             </select>
         </div>
     </div>

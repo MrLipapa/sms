@@ -44,7 +44,7 @@ layui.use(['form','jquery','jquery_cookie','upload', 'element', 'layer'], functi
         //获取下拉框
         var am = $('#className');
         //获取当前指派人id
-        var aid = $('#classId').val();
+        var aid = $('[name="courseId"]').val();
         if (data!=null){
             for (var i = 0 ; i < data.length ; i++){
                 //回显当前数据的指派人
