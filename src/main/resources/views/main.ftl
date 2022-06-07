@@ -48,6 +48,9 @@
 <#--      进入对应页面                  -->
                             <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="sale_chance/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 学生信息管理</span></a>
                         </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="clazz/clazz" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 班级管理</span></a>
+                    </li>
                         <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="course/course" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 课程管理</span></a>
                         </li>
@@ -55,14 +58,7 @@
                             <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="homework/homework" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 作业管理</span></a>
                         </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-home"></i><span class="layui-left-nav"> 留言管理</span> <span class="layui-nav-more"></span></a><dl class="layui-nav-child">
-                            <dd>
-                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="message/message" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 留言栏</span></a>
-                            </dd>
-                            <dd>
-                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="notice/notice" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 公告栏</span></a>
-                            </dd>
-                        </dl>
+                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="message/message" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 学情管理</span></a>
                     </li>
                     <#--进入对应页面，注意controller中对应的地址-->
                         <li class="layui-nav-item">

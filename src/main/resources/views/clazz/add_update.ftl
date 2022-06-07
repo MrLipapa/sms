@@ -19,7 +19,7 @@
     <br/>
     <div class="layui-form-item layui-row layui-col-xs12">
         <div class="layui-input-block">
-            <button type="button" class="layui-btn layui-btn-lg" id='sure' lay-submit="" lay-filter="addOrUpdateSaleChance">
+            <button type="button" class="layui-btn layui-btn-lg" id='sure' lay-submit="" lay-filter="addOrUpdateClazz">
                 确认
             </button>
             <button class="layui-btn layui-btn-lg layui-btn-normal" id="closeBtn">取消</button>
