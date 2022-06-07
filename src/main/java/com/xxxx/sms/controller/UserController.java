@@ -42,7 +42,6 @@ public class UserController extends BaseController {
     @PostMapping("update")
     @ResponseBody
     public ResultInfo update(HttpServletRequest request, String oldPassword, String newPassword, String confirmPassword){
-        int i = 1/0;
         //获取登录用户的id
         int id = LoginUserUtil.releaseUserIdFromCookie(request);
         userService.userUpdate(id,oldPassword,newPassword,confirmPassword);
