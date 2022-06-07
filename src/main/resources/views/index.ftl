@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>后台管理-登录</title>
+        <title>后台管理-登录</title>
     <#include "common.ftl">
     <link rel="stylesheet" href="${ctx}/css/index.css" media="all">
 </head>

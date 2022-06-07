@@ -45,7 +45,8 @@
         <div class="layui-side-scroll layui-left-menu">
                 <ul class="layui-nav layui-nav-tree layui-left-nav-tree layui-this" id="currency">
                         <li class="layui-nav-item">
-                            <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="user/user" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 学生信息管理</span></a>
+<#--      进入对应页面                  -->
+                            <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="sale_chance/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 学生信息管理</span></a>
                         </li>
                         <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="course/course" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 课程管理</span></a>
