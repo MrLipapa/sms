@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xxxx.sms.dao.HomeworkMapper" >
+  <resultMap id="BaseResultMap" type="com.xxxx.sms.vo.Homework" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="homework_name" property="homeworkName" jdbcType="VARCHAR" />
+    <result column="course_id" property="courseId" jdbcType="INTEGER" />
+    <result column="target_teacher_id" property="targetTeacherId" jdbcType="INTEGER" />
+    <result column="class_id" property="classId" jdbcType="INTEGER" />
+    <result column="context" property="context" jdbcType="VARCHAR" />
+    <result column="is_valid" property="isValid" jdbcType="INTEGER" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, homework_name, course_id, target_teacher_id, class_id, context, is_valid, create_date, 
+    update_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_homework
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_homework
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xxxx.sms.vo.Homework" >
+    insert into t_homework (id, homework_name, course_id, 
+      target_teacher_id, class_id, context, 
+      is_valid, create_date, update_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{homeworkName,jdbcType=VARCHAR}, #{courseId,jdbcType=INTEGER}, 
+      #{targetTeacherId,jdbcType=INTEGER}, #{classId,jdbcType=INTEGER}, #{context,jdbcType=VARCHAR}, 
+      #{isValid,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xxxx.sms.vo.Homework" >
+    insert into t_homework
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="homeworkName != null" >
+        homework_name,
+      </if>
+      <if test="courseId != null" >
+        course_id,
+      </if>
+      <if test="targetTeacherId != null" >
+        target_teacher_id,
+      </if>
+      <if test="classId != null" >
+        class_id,
+      </if>
+      <if test="context != null" >
+        context,
+      </if>
+      <if test="isValid != null" >
+        is_valid,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="homeworkName != null" >
+        #{homeworkName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null" >
+        #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="targetTeacherId != null" >
+        #{targetTeacherId,jdbcType=INTEGER},
+      </if>
+      <if test="classId != null" >
+        #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="context != null" >
+        #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null" >
+        #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xxxx.sms.vo.Homework" >
+    update t_homework
+    <set >
+      <if test="homeworkName != null" >
+        homework_name = #{homeworkName,jdbcType=VARCHAR},
+      </if>
+      <if test="courseId != null" >
+        course_id = #{courseId,jdbcType=INTEGER},
+      </if>
+      <if test="targetTeacherId != null" >
+        target_teacher_id = #{targetTeacherId,jdbcType=INTEGER},
+      </if>
+      <if test="classId != null" >
+        class_id = #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="context != null" >
+        context = #{context,jdbcType=VARCHAR},
+      </if>
+      <if test="isValid != null" >
+        is_valid = #{isValid,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xxxx.sms.vo.Homework" >
+    update t_homework
+    set homework_name = #{homeworkName,jdbcType=VARCHAR},
+      course_id = #{courseId,jdbcType=INTEGER},
+      target_teacher_id = #{targetTeacherId,jdbcType=INTEGER},
+      class_id = #{classId,jdbcType=INTEGER},
+      context = #{context,jdbcType=VARCHAR},
+      is_valid = #{isValid,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--多条件查询作业-->
+  <select id="queryHomeworkByParams" parameterType="com.xxxx.sms.query.HomeworkQuery" resultType="com.xxxx.sms.vo.Homework">
+    SELECT
+    h.id as id,
+    h.homework_name as homeworkName,
+    cour.course_name as courseName,
+    cla.class_name as className,
+    h.context as context,
+    h.update_date as updateDate
+    FROM
+    t_homework h
+    LEFT JOIN t_class cla ON class_id = cla.id
+    LEFT JOIN t_course cour ON course_id = cour.id
+    <where>
+      h.is_valid = 1 and h.target_teacher_id=1
+      <if test="null !=homeworkName and homeworkName !=''">
+        AND h.homework_name LIKE concat( "%", #{homeworkName}, "%" )
+      </if>
+      <if test="null !=courseName and courseName !=''">
+        AND cour.course_name LIKE concat( "%", #{courseName}, "%" )
+      </if>
+      <if test="null !=className and className !=''">
+        AND cla.class_name LIKE concat("%",#{className},"%")
+      </if>
+    </where>
+  </select>
+
+  <!--根据作业id查询作业班级-->
+  <select id="queryClassNameByHomeworkId" resultType="String" parameterType="int">
+    SELECT
+      c.class_name
+    FROM
+      t_homework h
+        LEFT JOIN t_class c ON h.class_id = c.id
+    WHERE
+      h.id = #{id}
+  </select>
+
+  <!--根据作业id查询课程名称-->
+  <select id="queryCourseName" resultType="String" parameterType="int">
+    SELECT
+      c.course_name as className
+    FROM
+      t_homework h
+        LEFT JOIN t_course c ON h.course_id = c.id
+    WHERE
+      h.id = #{id}
+  </select>
+
+  <!--根据课程名,查询课程id-->
+  <select id="querycourseId" parameterType="String" resultType="int">
+    select id from t_course where course_name=#{courseName}
+  </select>
+
+  <!--跟据班级名查询班级id-->
+  <select id="queryclassId" parameterType="String" resultType="int">
+    select id from t_class where class_name=#{className}
+  </select>
+
+  <!--根据作业名查询作业是否存在-->
+  <select id="queryhomeworkName" parameterType="String" resultType="String">
+    select id from t_homework where homework_name=#{homeworkName}
+  </select>
+
+  <!--添加作业-->
+  <insert id="addHomework" parameterType="com.xxxx.sms.vo.Homework">
+    insert into t_homework(homework_name, course_id, target_teacher_id, class_id, context, is_valid, create_date,update_date)
+    values(#{homework.homeworkName},#{homework.courseId},#{homework.targetTeacherId},#{homework.classId},#{homework.context},#{homework.isValid},#{homework.createDate},#{homework.updateDate})
+  </insert>
+
+  <!--修改作业-->
+  <update id="updateHomework" parameterType="com.xxxx.sms.vo.Homework">
+    update
+      t_homework
+    set
+      homework_name=#{homework.homeworkName},course_id=#{homework.courseId},class_id=#{homework.classId},context=#{homework.context},update_date=#{homework.updateDate}
+    where
+      id=#{homework.id}
+  </update>
+
+  <!--批量删除作业-->
+  <update id="deleteUsers">
+    update
+    t_homework
+    set
+    is_valid = 0
+    where
+    id in
+    <foreach collection="array" item="id" separator="," open="(" close=")">
+      #{id}
+    </foreach>
+  </update>
+
+  <!--查询所有销售人员-->
+  <select id="queryAllCourse" resultType="map">
+    select
+      id AS id,course_name AS courseName
+    FROM
+      t_course
+    WHERE
+      is_valid = 1
+  </select>
+
+  <!--查询所有销售人员-->
+  <select id="queryAllClass" resultType="map">
+    select
+      id AS id,class_name AS className
+    FROM
+      t_class
+    WHERE
+      is_valid = 1
+  </select>
+</mapper>
