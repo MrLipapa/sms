@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;
 
-public interface HomeworkMapper extends BaseMapper {
+public interface HomeworkMapper extends BaseMapper<Homework,Integer> {
     //多条件查询
     List<Homework> queryHomeworkByParams(HomeworkQuery homeworkQuery);
 

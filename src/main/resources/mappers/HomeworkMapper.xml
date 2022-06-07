@@ -240,7 +240,7 @@
     FROM
       t_course
     WHERE
-      is_valid = 1
+      is_vaild = 1
   </select>
 
   <!--查询所有销售人员-->
