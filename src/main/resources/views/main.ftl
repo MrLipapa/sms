@@ -63,6 +63,7 @@
                             </dd>
                         </dl>
                     </li>
+                    <#--进入对应页面，注意controller中对应的地址-->
                         <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-gears"></i><span class="layui-left-nav"> 系统设置</span> <span class="layui-nav-more"></span></a>
                             <dl class="layui-nav-child">
