@@ -1,5 +1,6 @@
 package com.xxxx.sms.controller;
 
+import com.xxxx.sms.annotation.RequirePermission;
 import com.xxxx.sms.base.BaseController;
 import com.xxxx.sms.base.ResultInfo;
 import com.xxxx.sms.query.RoleQuery;
@@ -41,6 +42,7 @@ public class RoleController extends BaseController {
      */
     @RequestMapping("list")
     @ResponseBody
+    @RequirePermission(code = "501001")
     public Map<String,Object> queryRoleByParams(RoleQuery roleQuery){
         return roleService.queryRoleByParams(roleQuery);
     }

@@ -44,22 +44,33 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll layui-left-menu">
                 <ul class="layui-nav layui-nav-tree layui-left-nav-tree layui-this" id="currency">
-                        <li class="layui-nav-item">
+                    <#if permissions?seq_contains("10")>
+                    <li class="layui-nav-item">
 <#--      进入对应页面                  -->
                             <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="sale_chance/index" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 学生信息管理</span></a>
                         </li>
+                    </#if>
+                    <#if permissions?seq_contains("60")>
                     <li class="layui-nav-item">
                         <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="clazz/clazz" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 班级管理</span></a>
                     </li>
+                    </#if>
+                    <#if permissions?seq_contains("30")>
                         <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="course/course" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 课程管理</span></a>
                         </li>
+                    </#if>
+                    <#if permissions?seq_contains("20")>
                         <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="homework/homework" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 作业管理</span></a>
                         </li>
+                    </#if>
+                    <#if permissions?seq_contains("40")>
                     <li class="layui-nav-item">
                         <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-10" data-tab="message/message" target="_self"><i class="fa fa-tachometer"></i><span class="layui-left-nav"> 学情管理</span></a>
                     </li>
+                    </#if>
+                    <#if permissions?seq_contains("50")>
                     <#--进入对应页面，注意controller中对应的地址-->
                         <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-gears"></i><span class="layui-left-nav"> 系统设置</span> <span class="layui-nav-more"></span></a>
@@ -72,6 +83,7 @@
                                     </dd>
                             </dl>
                         </li>
+                    </#if>
                     <span class="layui-nav-bar" style="top: 201px; height: 0px; opacity: 0;"></span>
                 </ul>
         </div>

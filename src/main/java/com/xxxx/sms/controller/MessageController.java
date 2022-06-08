@@ -2,6 +2,7 @@ package com.xxxx.sms.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.xxxx.sms.annotation.RequirePermission;
 import com.xxxx.sms.base.BaseController;
 import com.xxxx.sms.base.ResultInfo;
 import com.xxxx.sms.query.MessageQuery;
@@ -34,6 +35,7 @@ public class MessageController extends BaseController {
      */
     @GetMapping("list")
     @ResponseBody
+    @RequirePermission(code = "401002")
     public Map<String, Object> queryByParams(MessageQuery messageQuery){
         return messageService.queryByParams(messageQuery);
     }

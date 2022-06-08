@@ -1,5 +1,6 @@
 package com.xxxx.sms.controller;
 
+import com.xxxx.sms.annotation.RequirePermission;
 import com.xxxx.sms.base.BaseController;
 import com.xxxx.sms.base.ResultInfo;
 import com.xxxx.sms.model.CourseModel;
@@ -33,6 +34,7 @@ public class CourseController extends BaseController {
      */
     @RequestMapping("list")
     @ResponseBody
+    @RequirePermission(code = "301002")
     public Map<String,Object> queryCourseByParams(CourseQuery courseQuery){
         return courseService.queryCourseByParams(courseQuery);
     }

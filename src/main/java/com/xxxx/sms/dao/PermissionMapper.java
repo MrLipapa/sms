@@ -1,7 +1,6 @@
 package com.xxxx.sms.dao;
 
 import com.xxxx.sms.base.BaseMapper;
-import com.xxxx.sms.vo.Permission;
 
 import java.util.List;
 

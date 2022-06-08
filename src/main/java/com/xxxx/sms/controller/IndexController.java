@@ -1,5 +1,6 @@
 package com.xxxx.sms.controller;
 import com.xxxx.sms.base.BaseController;
+import com.xxxx.sms.service.PermissionService;
 import com.xxxx.sms.service.UserService;
 import com.xxxx.sms.utils.LoginUserUtil;
 import com.xxxx.sms.vo.User;
@@ -9,11 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class IndexController extends BaseController {
     @Resource
     private UserService userService;
+
+    @Resource
+    private PermissionService permissionService;
     /**
      * 系统登录页
      * @return
@@ -41,6 +46,11 @@ public class IndexController extends BaseController {
         int id = LoginUserUtil.releaseUserIdFromCookie(request);
         User user = userService.selectByPrimaryKey(id);
         request.setAttribute("user",user);
+
+        //当用户登录时,查询该用户已有的权限码,存放在session作用域中,以便前台判断使用
+        List<String> permissions = permissionService.selectUserRoleAvlValue(id);
+        request.getSession().setAttribute("permissions",permissions);
+
         return "main";
     }
 }

@@ -1,4 +1,5 @@
 package com.xxxx.sms.controller;
+import com.xxxx.sms.annotation.RequirePermission;
 import com.xxxx.sms.base.BaseController;
 import com.xxxx.sms.base.ResultInfo;
 import com.xxxx.sms.query.SaleChanceQuery;
@@ -30,6 +31,7 @@ public class SaleChanceController extends BaseController {
      */
     @GetMapping("list")
     @ResponseBody
+    @RequirePermission(code = "101001")
     public Map<String, Object> queryByParams(SaleChanceQuery saleChanceQuery){
 
         return saleChanceService.queryByParams(saleChanceQuery);

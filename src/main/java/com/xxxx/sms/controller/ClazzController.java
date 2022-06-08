@@ -1,5 +1,6 @@
 package com.xxxx.sms.controller;
 
+import com.xxxx.sms.annotation.RequirePermission;
 import com.xxxx.sms.base.BaseController;
 import com.xxxx.sms.base.ResultInfo;
 import com.xxxx.sms.query.ClazzQuery;
@@ -25,6 +26,7 @@ public class ClazzController extends BaseController {
      */
     @GetMapping("list")
     @ResponseBody
+    @RequirePermission(code = "6010")
     public Map<String, Object> queryByParams(ClazzQuery clazzQuery) {
         return clazzService.queryByParams(clazzQuery);
     }

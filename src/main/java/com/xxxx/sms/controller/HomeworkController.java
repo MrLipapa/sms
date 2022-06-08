@@ -1,5 +1,6 @@
 package com.xxxx.sms.controller;
 
+import com.xxxx.sms.annotation.RequirePermission;
 import com.xxxx.sms.base.BaseController;
 import com.xxxx.sms.base.ResultInfo;
 import com.xxxx.sms.query.HomeworkQuery;
@@ -50,6 +51,7 @@ public class HomeworkController extends BaseController {
      */
     @RequestMapping("list")
     @ResponseBody
+    @RequirePermission(code = "201001")
     public Map<String,Object> queryHomeworkByParams(HomeworkQuery homeworkQuery){
         return homeworkService.queryHomeworkByParams(homeworkQuery);
     }
@@ -58,9 +60,9 @@ public class HomeworkController extends BaseController {
     @ResponseBody
     public ResultInfo addHomework(Homework homework,HttpServletRequest request){
         Integer id = LoginUserUtil.releaseUserIdFromCookie(request);
-        //AssertUtil.isTrue(id==null||id==0,"没有从获取到cookie");
+        AssertUtil.isTrue(id==0 || id==null,"没有从获取到cookie");
         System.out.println(id);
-        homework.setTargetTeacherId(1);
+        homework.setTargetTeacherId(id);
         homeworkService.addHomework(homework);
         return success();
     }

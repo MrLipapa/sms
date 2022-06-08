@@ -1,5 +1,6 @@
 package com.xxxx.sms.controller;
 
+import com.xxxx.sms.annotation.RequirePermission;
 import com.xxxx.sms.base.BaseController;
 import com.xxxx.sms.base.ResultInfo;
 import com.xxxx.sms.model.TreeModule;
@@ -36,6 +37,7 @@ public class ModuleController extends BaseController {
     //从资源管理页面对应的js代码跳转地址:在页面上显示所有资源模块
     @RequestMapping("list")
     @ResponseBody
+    @RequirePermission(code = "502001")
     public Map<String, Object> queryModules(){
         return moduleService.queryModules();
     }

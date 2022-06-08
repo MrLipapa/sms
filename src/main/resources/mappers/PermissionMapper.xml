@@ -134,11 +134,14 @@
 
   <!--查询用户的权限吗-->
   <select id="selectUserRoleAclValue" parameterType="int" resultType="String">
-    select
-        acl_value
-    from t_permission p
-        left join t_user_role ur on p.role_id = ur.role_id
-    where ur.user_id = #{id}
+    SELECT
+      m.opt_value
+    FROM
+      t_permission p
+        LEFT JOIN t_user_role ur ON p.role_id = ur.role_id
+        LEFT JOIN t_module m ON p.module_id = m.id
+    WHERE
+      ur.user_id = #{id}
   </select>
 
   <!--批量添加角色权限-->
@@ -147,7 +150,7 @@
     into t_permission
         (role_id, module_id, acl_value, create_date, update_date)
     values
-        <foreach collection="list" separator="," item="per">
+        <foreach collection="list" item="per" separator=",">
           (#{per.roleId},#{per.moduleId},#{per.aclValue},#{per.createDate},#{per.updateDate})
         </foreach>
   </insert>
