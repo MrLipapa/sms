@@ -36,7 +36,7 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
             NoLoginException ne = (NoLoginException)ex;
             // mv.setViewName("index");   目前是直接去找视图
             //目的是跳转到登录页面   必须通过接口才能显示
-            mv.setViewName("redirect:index");
+            mv.setViewName("redirect:/index");
             return mv;
         }
 
@@ -97,7 +97,6 @@ public class GlobalExceptionResolver implements HandlerExceptionResolver {
                 return null;
             }
         }
-
         return mv;
     }
 }

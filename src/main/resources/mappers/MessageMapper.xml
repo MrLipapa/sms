@@ -151,7 +151,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <!--多条件分页查询数据-->
-  <select id="queryByParams" parameterType="com.xxxx.sms.query.MessageQuery" resultType="Message">
+  <select id="queryByParams" resultType="Message">
     select
         m.*,u.user_name as userName,c.class_name as className
     from
@@ -159,12 +159,12 @@
     left join t_user u on m.target_id = u.id
     left join t_class c on m.class_id = c.id
     <where>
-        m.is_valid = 1
-        <if test="userName != null and userName != ''">
-          and  u.user_name like concat("%",#{userName},"%")
+        m.is_valid = 1 and source_id=#{sourceId}
+        <if test="query.userName != null and query.userName != ''">
+          and  u.user_name like concat("%",#{query.userName},"%")
         </if>
-        <if test="className != null and className != ''">
-          and  c.class_name like concat("%",#{className},"%")
+        <if test="query.className != null and query.className != ''">
+          and  c.class_name like concat("%",#{query.className},"%")
         </if>
     </where>
   </select>

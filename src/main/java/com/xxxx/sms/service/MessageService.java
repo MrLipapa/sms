@@ -26,11 +26,11 @@ public class MessageService extends BaseService<Message,Integer> {
      * @param messageQuery
      * @return
      */
-    public Map<String, Object> queryByParams(MessageQuery messageQuery){
+    public Map<String, Object> queryByParams(MessageQuery messageQuery,Integer sourceId){
         Map<String, Object> map = new HashMap<>();
         //开启分页
         PageHelper.startPage(messageQuery.getPage(),messageQuery.getLimit());
-        List<Message> messages = messageMapper.queryByParams(messageQuery);
+        List<Message> messages = messageMapper.queryByParams(messageQuery,sourceId);
         //按照分页条件，格式化数据
         PageInfo<Message> messagePageInfo = new PageInfo<>(messages);
 

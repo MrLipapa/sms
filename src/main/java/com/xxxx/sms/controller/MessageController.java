@@ -36,8 +36,10 @@ public class MessageController extends BaseController {
     @GetMapping("list")
     @ResponseBody
     @RequirePermission(code = "401002")
-    public Map<String, Object> queryByParams(MessageQuery messageQuery){
-        return messageService.queryByParams(messageQuery);
+    public Map<String, Object> queryByParams(HttpServletRequest request,MessageQuery messageQuery){
+        //获取源对象id
+        Integer sourceId = LoginUserUtil.releaseUserIdFromCookie(request);
+        return messageService.queryByParams(messageQuery,sourceId);
     }
      // 打开留言栏界面
     @RequestMapping("message")
@@ -66,10 +68,10 @@ public class MessageController extends BaseController {
     @PostMapping("save")
     @ResponseBody
     public ResultInfo save(HttpServletRequest request, Message message){
-        /*//获取源对象id
+        //获取源对象id
         Integer sourceId = LoginUserUtil.releaseUserIdFromCookie(request);
         //设置留言人ID
-        message.setSourceId(sourceId);*/
+        message.setSourceId(sourceId);
         //添加数据
         messageService.addMessage(message);
         return success();

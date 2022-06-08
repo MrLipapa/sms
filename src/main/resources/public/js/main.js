@@ -11,8 +11,8 @@ layui.use(['element', 'layer', 'layuimini','jquery','jquery_cookie'], function (
     //退出登录
     $(".login-out").click(function (){
         //清除登录状态 删cookie
-        $.removeCookie("userIdStr",{domain:"localhost",path:"/crm"});
-        $.removeCookie("userName",{domain:"localhost",path:"/crm"});
+        $.removeCookie("userIdStr",{domain:"localhost",path:"/sms"});
+        $.removeCookie("userName",{domain:"localhost",path:"/sms"});
 
         //跳转到登录页面
         window.location.href = ctx +"/index";
