@@ -28,20 +28,6 @@ layui.use(['table','layer'],function(){
         ]]
     });
 
-    $('#btnSearch').click(function () {
-        //这里以搜索为例
-        tableIns.reload({
-            where: { //设定异步数据接口的额外参数，任意设
-                createMan:$('[name="homeworkName"]').val(),
-                courseName:$('[name="courseName"]').val(),
-                className:$('[name="className"]').val()
-            }
-            ,page: {
-                curr: 1 //重新从第 1 页开始
-            }
-        });
-    })
-
     //监听多条件查询按钮
     $('#btnSearch').click(function () {
         //这里以搜索为例
