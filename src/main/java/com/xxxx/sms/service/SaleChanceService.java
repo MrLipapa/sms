@@ -7,6 +7,7 @@ import com.xxxx.sms.dao.SaleChanceMapper;
 import com.xxxx.sms.query.SaleChanceQuery;
 import com.xxxx.sms.utils.AssertUtil;
 import com.xxxx.sms.utils.PhoneUtil;
+import com.xxxx.sms.utils.UserIDBase64;
 import com.xxxx.sms.vo.SaleChance;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class SaleChanceService extends BaseService {
+public class SaleChanceService extends BaseService<SaleChance,Integer> {
     @Resource
     private SaleChanceMapper saleChanceMapper;
 
