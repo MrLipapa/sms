@@ -52,8 +52,10 @@ public class HomeworkController extends BaseController {
     @RequestMapping("list")
     @ResponseBody
     @RequirePermission(code = "201001")
-    public Map<String,Object> queryHomeworkByParams(HomeworkQuery homeworkQuery){
-        return homeworkService.queryHomeworkByParams(homeworkQuery);
+    public Map<String,Object> queryHomeworkByParams(HttpServletRequest request,HomeworkQuery homeworkQuery){
+        //根据Cookie查询当前用户id
+        int id = LoginUserUtil.releaseUserIdFromCookie(request);
+        return homeworkService.queryHomeworkByParams(homeworkQuery,id);
     }
 
     @RequestMapping("save")

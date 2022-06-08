@@ -10,7 +10,7 @@ import java.util.Map;
 
 public interface HomeworkMapper extends BaseMapper<Homework,Integer> {
     //多条件查询
-    List<Homework> queryHomeworkByParams(HomeworkQuery homeworkQuery);
+    List<Homework> queryHomeworkByParams(@Param("homework") HomeworkQuery homeworkQuery,@Param("id") Integer id);
 
     //根据作业id查询上传作业的学生的姓名
     public String queryUserNameOfHomework(Integer id);

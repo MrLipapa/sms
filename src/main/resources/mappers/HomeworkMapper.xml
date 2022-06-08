@@ -154,15 +154,15 @@
     LEFT JOIN t_class cla ON class_id = cla.id
     LEFT JOIN t_course cour ON course_id = cour.id
     <where>
-      h.is_valid = 1 and h.target_teacher_id=1
-      <if test="null !=homeworkName and homeworkName !=''">
-        AND h.homework_name LIKE concat( "%", #{homeworkName}, "%" )
+      h.is_valid = 1 and h.target_teacher_id=#{id}
+      <if test="null != homework.homeworkName and homework.homeworkName !=''">
+        AND h.homework_name LIKE concat( "%", #{homework.homeworkName}, "%" )
       </if>
-      <if test="null !=courseName and courseName !=''">
-        AND cour.course_name LIKE concat( "%", #{courseName}, "%" )
+      <if test="null !=homework.courseName and homework.courseName !=''">
+        AND cour.course_name LIKE concat( "%", #{homework.courseName}, "%" )
       </if>
-      <if test="null !=className and className !=''">
-        AND cla.class_name LIKE concat("%",#{className},"%")
+      <if test="null !=homework.className and homework.className !=''">
+        AND cla.class_name LIKE concat("%",#{homework.className},"%")
       </if>
     </where>
   </select>

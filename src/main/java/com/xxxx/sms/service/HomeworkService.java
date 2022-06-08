@@ -28,12 +28,12 @@ public class HomeworkService extends BaseService<Homework,Integer> {
      * 4. 设置 map
      * @param homeworkQuery
      */
-    public Map<String,Object> queryHomeworkByParams(HomeworkQuery homeworkQuery){
+    public Map<String,Object> queryHomeworkByParams(HomeworkQuery homeworkQuery,Integer id){
         Map<String,Object> map=new HashMap<>();
         //1. 开启分页
         PageHelper.startPage(homeworkQuery.getPage(), homeworkQuery.getLimit());
         //2. 多条件查询
-        List<Homework> homeworks = homeworkMapper.queryHomeworkByParams(homeworkQuery);
+        List<Homework> homeworks = homeworkMapper.queryHomeworkByParams(homeworkQuery,id);
         //3. 按照分页条件,进行格式化数据
         PageInfo<Homework> homeworkPageInfo = new PageInfo<>(homeworks);
         //4.设置map
